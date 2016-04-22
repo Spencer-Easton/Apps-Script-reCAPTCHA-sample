@@ -1,5 +1,5 @@
 #Simple reCaptcha Example    
-A sample project on how to use reCaptcha in you Google Apps Script webapps.  
+A sample project on how to use reCaptcha in a Google Apps Script WebApp.  
   
 ####Setup  
 1) Add Code.gs and index.html to a new project.  
