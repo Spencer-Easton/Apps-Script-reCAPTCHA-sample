@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+  <body>
+    <form  onsubmit="handleFormSubmit(this)">
+    <div class="g-recaptcha" data-sitekey="YOURSITEKEY"></div>
+    <input type="submit" />
+    </form>
+    <div id="response"></div>
+  </body>
+  <script>
+  
+  function preventFormSubmit() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+          });
+        }
+      }
+      window.addEventListener('load', preventFormSubmit);
+  
+  
+    function handleFormSubmit(formObject) {
+        google.script.run.withSuccessHandler(updateUrl).processForm(formObject);
+      }
+      function updateUrl(response) {
+        var div = document.getElementById('response');
+        div.innerHTML = response;
+      }
+  </script>
+</html>
+
+
