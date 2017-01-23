@@ -7,11 +7,16 @@ function processForm(formObj){
 }
 
 function testCaptcha(response){
-  var url  = 'https://www.google.com/recaptcha/api/siteverify?secret=' + PropertiesService.getScriptProperties().getProperty('captcha_secret') + "&response=" + response; 
+  var url  = 'https://www.google.com/recaptcha/api/siteverify'; 
   
+  var captcha_payload = {
+    'secret': PropertiesService.getScriptProperties().getProperty('captcha_secret'),
+    'response': response
+  };
   var params = { 
-    method:"POST"
-    }
+    'method' : 'POST',
+    'payload' : captcha_payload
+  }
   var results = UrlFetchApp.fetch(url, params);
   
   //isSuccess = JSON.parse(results.getContentText()).success
